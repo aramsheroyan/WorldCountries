@@ -64,7 +64,10 @@ class CountriesFragment : Fragment(), CountriesPresentationContract.View,
     override fun onSelected(countryName: String?) {
 
         view?.findNavController()
-            ?.navigate(R.id.countryInfoFragment, bundleOf("name" to countryName))
+            ?.navigate(
+                R.id.action_navigation_countries_to_countryInfoFragment,
+                bundleOf("name" to countryName)
+            )
     }
 
     private fun createComponent(): CountriesComponent? {

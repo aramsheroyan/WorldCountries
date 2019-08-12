@@ -49,6 +49,7 @@ class CountryInfoFragment : Fragment(), CountryInfoPresentationContract.View {
 
     override fun showCountryDetails(country: Country) {
         Timber.d(country.toString())
+        nameTextView.text = country.name
     }
 
     private fun createComponent(): CountryInfoComponent? {
