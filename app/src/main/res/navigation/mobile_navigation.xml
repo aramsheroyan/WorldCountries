@@ -18,6 +18,12 @@
             tools:layout="@layout/fragment_dashboard"/>
 
     <fragment
+        android:id="@+id/navigation_countries"
+        android:name="com.example.worldcountries.ui.countries.CountriesFragment"
+        android:label="Countries"
+        tools:layout="@layout/fragment_countries"/>
+
+    <fragment
             android:id="@+id/navigation_notifications"
             android:name="com.example.worldcountries.ui.notifications.NotificationsFragment"
             android:label="@string/title_notifications"

@@ -2,6 +2,7 @@ package com.example.worldcountries.app.di
 
 import android.app.Application
 import android.content.Context
+import com.example.worldcountries.data.countries.CountriesAPI
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -25,9 +26,10 @@ class AppModule {
     fun provideRetrofit(logging: HttpLoggingInterceptor): Retrofit {
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder()
+        httpClient.addInterceptor(logging)
 
         return Retrofit.Builder()
-            .baseUrl("https://restcountries.eu/rest/v2/")
+            .baseUrl("https://restcountries.eu/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(httpClient.build())
@@ -36,13 +38,13 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(): OkHttpClient {
-        return OkHttpClient()
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor()
     }
 
     @Provides
     @Singleton
-    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor()
+    fun provideAPI(retrofit: Retrofit): CountriesAPI {
+        return retrofit.create(CountriesAPI::class.java)
     }
 }
