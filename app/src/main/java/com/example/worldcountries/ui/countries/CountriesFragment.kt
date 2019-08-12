@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -16,9 +18,10 @@ import kotlinx.android.synthetic.main.fragment_countries.*
 import javax.inject.Inject
 
 
-class CountriesFragment : Fragment(), CountriesPresentationContract.View {
+class CountriesFragment : Fragment(), CountriesPresentationContract.View,
+    CountryViewHolder.OnCountrySelectedListener {
 
-    var countriesComponent: CountriesComponent? = null
+    private var countriesComponent: CountriesComponent? = null
 
     @Inject
     lateinit var presenter: CountriesPresentationContract.Presenter
@@ -42,13 +45,26 @@ class CountriesFragment : Fragment(), CountriesPresentationContract.View {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroyed()
+    }
+
     override fun populateData(countries: List<Country>) {
-        val countriesAdapter = CountriesAdapter(countries)
+        val countriesAdapter = CountriesAdapter(countries, this)
         if (countriesRecyclerView?.itemDecorationCount == 0)
             countriesRecyclerView.addItemDecoration(CountriesItemDecoration(context!!))
         countriesRecyclerView.adapter = countriesAdapter
-        countriesRecyclerView.layoutManager =  LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        countriesRecyclerView.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
 
+    }
+
+
+    override fun onSelected(countryName: String?) {
+
+        view?.findNavController()
+            ?.navigate(R.id.countryInfoFragment, bundleOf("name" to countryName))
     }
 
     private fun createComponent(): CountriesComponent? {

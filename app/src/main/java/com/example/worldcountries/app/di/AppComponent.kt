@@ -6,6 +6,8 @@ import com.example.worldcountries.data.di.DatabaseModule
 import com.example.worldcountries.data.di.RepositoryModule
 import com.example.worldcountries.ui.countries.CountriesComponent
 import com.example.worldcountries.ui.countries.CountriesModule
+import com.example.worldcountries.ui.countryinfo.CountryInfoComponent
+import com.example.worldcountries.ui.countryinfo.CountryInfoModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -25,4 +27,6 @@ interface AppComponent {
     fun inject(target: WCApplication)
 
     fun createSubComponent(module: CountriesModule): CountriesComponent
+    fun createSubComponent(module: CountryInfoModule): CountryInfoComponent
+
 }

@@ -5,13 +5,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.worldcountries.data.room.Country
 import kotlinx.android.synthetic.main.country_view_holder.view.*
 
-class CountryViewHolder: RecyclerView.ViewHolder {
+class CountryViewHolder : RecyclerView.ViewHolder {
 
-    constructor(itemView: View): super(itemView){
+    private var listener: OnCountrySelectedListener
 
+    interface OnCountrySelectedListener {
+        fun onSelected(countryName: String?)
     }
 
-    fun populateData(country: Country){
-        itemView.nameTextView.text = country.name
+    constructor(itemView: View, listener: OnCountrySelectedListener) : super(itemView) {
+        this.listener = listener
+    }
+
+    fun populateData(country: Country) {
+        val name = country.name
+        itemView.nameTextView.text = name
+        itemView.frameLayout.setOnClickListener {
+            listener.onSelected(name)
+        }
     }
 }

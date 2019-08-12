@@ -21,11 +21,24 @@
         android:id="@+id/navigation_countries"
         android:name="com.example.worldcountries.ui.countries.CountriesFragment"
         android:label="Countries"
-        tools:layout="@layout/fragment_countries"/>
+        tools:layout="@layout/fragment_countries">
+        <action
+            android:id="@+id/action_navigation_countries_to_countryInfoFragment"
+            app:destination="@id/countryInfoFragment" />
+    </fragment>
 
     <fragment
             android:id="@+id/navigation_notifications"
             android:name="com.example.worldcountries.ui.notifications.NotificationsFragment"
             android:label="@string/title_notifications"
             tools:layout="@layout/fragment_notifications"/>
+    <fragment
+        android:id="@+id/countryInfoFragment"
+        android:name="com.example.worldcountries.ui.countryinfo.CountryInfoFragment"
+        android:label="fragment_country_info"
+        tools:layout="@layout/fragment_country_info" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>
