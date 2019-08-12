@@ -1,6 +1,7 @@
 package com.example.worldcountries.data.countries
 
 import com.example.worldcountries.data.room.Country
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 class CountriesRepository(private val remoteDataSource: CountriesDataContract.RemoteDataSource,
@@ -25,6 +26,10 @@ class CountriesRepository(private val remoteDataSource: CountriesDataContract.Re
                 }
             }
             .toSingle()
+    }
+
+    override fun getCountryByName(name: String): Maybe<Country> {
+        return localDataSource.getCountryByName(name)
     }
 
 

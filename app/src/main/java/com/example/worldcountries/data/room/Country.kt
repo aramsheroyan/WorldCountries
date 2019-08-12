@@ -1,6 +1,7 @@
 package com.example.worldcountries.data.room
 
 import androidx.room.*
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 @Entity(tableName = "countries")
@@ -17,7 +18,7 @@ data class Country(
     @ColumnInfo(name = "timezones") val timezones: List<String>?,
     @ColumnInfo(name = "borders") val borders: List<String>?,
     @ColumnInfo(name = "currencies") val currencies: List<Currency>,
-    @ColumnInfo(name = "languages")val languages: List<Language>,
+    @ColumnInfo(name = "languages") val languages: List<Language>,
     @ColumnInfo(name = "flag") val flag: String?
 ) {
 
@@ -26,6 +27,9 @@ data class Country(
 
         @Query("SELECT * FROM countries")
         fun getAll(): Single<List<Country>>
+
+        @Query("SELECT * FROM countries where name=:name")
+        fun getByName(name: String): Maybe<Country>
 
         @Insert
         fun insertAll(vararg country: Country)
@@ -40,5 +44,14 @@ data class Country(
     data class Language(
         val name: String
     )
+
+    override fun toString(): String {
+        return "Country(uid=$uid, name=$name, alpha2Code=$alpha2Code, alpha3Code=$alpha3Code," +
+                "capital=$capital, region=$region, subregion=$subregion, population=$population, " +
+                "area=$area, timezones=$timezones, borders=$borders, currencies=$currencies, " +
+                "languages=$languages, flag=$flag)"
+    }
+
+
 }
 

@@ -11,6 +11,10 @@ class CountriesLocalDataSource(val countriesDAO: CountriesDAO): CountriesDataCon
 
     }
 
+    override fun getCountryByName(name: String): Maybe<Country> {
+        return countriesDAO.getByName(name)
+    }
+
     override fun save(countries: List<Country>) {
         countriesDAO.insertAll(*countries.toTypedArray())
     }

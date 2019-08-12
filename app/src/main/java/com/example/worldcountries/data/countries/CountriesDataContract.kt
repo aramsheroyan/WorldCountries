@@ -7,16 +7,18 @@ import io.reactivex.Single
 
 interface CountriesDataContract {
 
-    interface Repository{
+    interface Repository {
+        fun getAllCountries(): Single<List<Country>>
+        fun getCountryByName(name: String): Maybe<Country>
+    }
+
+    interface RemoteDataSource {
         fun getAllCountries(): Single<List<Country>>
     }
 
-    interface RemoteDataSource{
+    interface LocalDataSource {
         fun getAllCountries(): Single<List<Country>>
-    }
-
-    interface LocalDataSource{
-        fun getAllCountries(): Single<List<Country>>
+        fun getCountryByName(name: String): Maybe<Country>
         fun save(countries: List<Country>)
     }
 }
