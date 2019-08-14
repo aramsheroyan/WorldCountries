@@ -38,12 +38,20 @@ data class Country(
     data class Currency(
         val code: String,
         val name: String,
-        val symbol: String
-    )
+        val symbol: String?
+    ) {
+        override fun toString(): String {
+            return if (symbol != null) " $code ($symbol) $name" else " $code $name"
+        }
+    }
 
     data class Language(
         val name: String
-    )
+    ) {
+        override fun toString(): String {
+            return name
+        }
+    }
 
     override fun toString(): String {
         return "Country(uid=$uid, name=$name, alpha2Code=$alpha2Code, alpha3Code=$alpha3Code," +

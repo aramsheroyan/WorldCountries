@@ -1,56 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".ui.countryinfo.CountryInfoFragment">
+    android:fillViewport="true"
+    android:scrollbars="none">
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="16dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@android:color/white"
+        android:paddingBottom="16dp"
+        tools:context=".ui.countryinfo.CountryInfoFragment">
 
-        <ImageView
-            android:id="@+id/flagImageView"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/flag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
-    </androidx.cardview.widget.CardView>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/flagImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+        </androidx.cardview.widget.CardView>
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/name"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_hReight="wrap_content"-->
-    <!--        app:layout_constraintLeft_toRightOf="@id/flagImageView"-->
-    <!--        app:layout_constraintRight_toRightOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="@id/flagImageView"-->
-    <!--        android:textSize="18sp"-->
-    <!--        android:textColor="@color/colorPrimary"-->
-    <!--        android:text="Country"/>-->
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/nameItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/flag" />
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/nameTextView"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintRight_toRightOf="@id/name"-->
-    <!--        app:layout_constraintLeft_toLeftOf="@id/name"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/name"-->
-    <!--android:text="aa"-->
-    <!--        />-->
-    <!--    <TextView-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="aaaaaa"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/flagImageView" />-->
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/capitalItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/nameItemView" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/regionItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/capitalItemView" />
+
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/subRegionItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/regionItemView" />
+
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/populationItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/subRegionItemView" />
+
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/areaItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/populationItemView" />
+
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/timeZonesItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/areaItemView" />
+
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/currencyItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/timeZonesItemView" />
+
+        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+            android:id="@+id/languageItemView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintTop_toBottomOf="@id/currencyItemView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/openMapButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/show_on_map"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:cornerRadius="32dp"
+            app:layout_constraintTop_toBottomOf="@id/languageItemView"
+            app:rippleColor="@color/colorPrimary"
+            app:strokeColor="@color/colorPrimary" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

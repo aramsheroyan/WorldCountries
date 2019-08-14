@@ -1,6 +1,8 @@
 package com.example.worldcountries.ui.countryinfo
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +15,7 @@ import com.example.worldcountries.app.utils.ImageUtils
 import com.example.worldcountries.data.room.Country
 import kotlinx.android.synthetic.main.fragment_country_info.*
 import timber.log.Timber
+import java.util.Collections.replaceAll
 import javax.inject.Inject
 
 private const val NAME = "name"
@@ -49,11 +52,38 @@ class CountryInfoFragment : Fragment(), CountryInfoPresentationContract.View {
 
     override fun showCountryDetails(country: Country) {
         Timber.d(country.toString())
-//        nameTextView.text = country.name
-
         if (country.flag != null) {
             ImageUtils.loadImage(this, country.flag, flagImageView)
         }
+
+        nameItemView.setStrings("Country", country.name)
+        capitalItemView.setStrings("Capital", country.capital)
+        regionItemView.setStrings("Region", country.region)
+        subRegionItemView.setStrings("Subregion", country.subregion)
+        populationItemView.setStrings("Population", country.population.toString())
+        areaItemView.setStrings("Area", country.area.toString() + " km\u00B2")
+        timeZonesItemView.setStrings(
+            "Timezones", country.timezones.toString()
+                .replace("[", "").replace("]", "")
+        )
+        currencyItemView.setStrings(
+            "Currency", country.currencies.toString()
+                .replace("[", "").replace("]", "")
+        )
+
+        languageItemView.setStrings(
+            "Languages", country.languages.toString()
+                .replace("[", "").replace("]", "")
+        )
+
+
+        openMapButton.setOnClickListener {
+            val gmmIntentUri = Uri.parse("geo:0,0?q=${country.name}")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
+
     }
 
     private fun createComponent(): CountryInfoComponent? {
