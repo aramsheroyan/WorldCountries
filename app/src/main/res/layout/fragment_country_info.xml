@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".ui.countryinfo.CountryInfoFragment">
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/nameTextView" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="16dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/flagImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+    </androidx.cardview.widget.CardView>
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/name"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_hReight="wrap_content"-->
+    <!--        app:layout_constraintLeft_toRightOf="@id/flagImageView"-->
+    <!--        app:layout_constraintRight_toRightOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/flagImageView"-->
+    <!--        android:textSize="18sp"-->
+    <!--        android:textColor="@color/colorPrimary"-->
+    <!--        android:text="Country"/>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/nameTextView"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintRight_toRightOf="@id/name"-->
+    <!--        app:layout_constraintLeft_toLeftOf="@id/name"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/name"-->
+    <!--android:text="aa"-->
+    <!--        />-->
+    <!--    <TextView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="aaaaaa"-->
+    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/flagImageView" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

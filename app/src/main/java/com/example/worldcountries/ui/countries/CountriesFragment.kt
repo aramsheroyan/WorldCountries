@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,6 +44,7 @@ class CountriesFragment : Fragment(), CountriesPresentationContract.View,
         super.onViewCreated(view, savedInstanceState)
         presenter.onScreenStarted()
 
+
     }
 
     override fun onDestroy() {
@@ -54,9 +56,22 @@ class CountriesFragment : Fragment(), CountriesPresentationContract.View,
         val countriesAdapter = CountriesAdapter(countries, this)
         if (countriesRecyclerView?.itemDecorationCount == 0)
             countriesRecyclerView.addItemDecoration(CountriesItemDecoration(context!!))
+
         countriesRecyclerView.adapter = countriesAdapter
         countriesRecyclerView.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                countriesAdapter.filter.filter(newText);
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+        })
 
     }
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 
 import com.example.worldcountries.R
 import com.example.worldcountries.app.WCApplication
+import com.example.worldcountries.app.utils.ImageUtils
 import com.example.worldcountries.data.room.Country
 import kotlinx.android.synthetic.main.fragment_country_info.*
 import timber.log.Timber
@@ -20,7 +21,6 @@ class CountryInfoFragment : Fragment(), CountryInfoPresentationContract.View {
 
     private var name: String? = null
     private var component: CountryInfoComponent? = null
-
     @Inject
     lateinit var presenter: CountryInfoPresentationContract.Presenter
 
@@ -49,7 +49,11 @@ class CountryInfoFragment : Fragment(), CountryInfoPresentationContract.View {
 
     override fun showCountryDetails(country: Country) {
         Timber.d(country.toString())
-        nameTextView.text = country.name
+//        nameTextView.text = country.name
+
+        if (country.flag != null) {
+            ImageUtils.loadImage(this, country.flag, flagImageView)
+        }
     }
 
     private fun createComponent(): CountryInfoComponent? {
