@@ -25,4 +25,8 @@ class CountryInfoPresenter(
                 })
         )
     }
+
+    override fun onDestroyed() {
+        compositeDisposable.dispose()
+    }
 }

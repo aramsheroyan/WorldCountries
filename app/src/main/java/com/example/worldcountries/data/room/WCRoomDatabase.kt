@@ -7,7 +7,7 @@ import com.example.worldcountries.data.room.typeconverters.CurrencyTypeConvertor
 import com.example.worldcountries.data.room.typeconverters.LanguageTypeConverter
 import com.example.worldcountries.data.room.typeconverters.StringListConverter
 
-@Database(entities = arrayOf(Country::class), version = 1)
+@Database(entities = arrayOf(Country::class,ProgramCountry::class), version = 1)
 @TypeConverters(
     StringListConverter::class,
     CurrencyTypeConvertor::class,
@@ -15,4 +15,6 @@ import com.example.worldcountries.data.room.typeconverters.StringListConverter
 )
 abstract class WCRoomDatabase : RoomDatabase() {
     abstract fun countriesDAO(): Country.CountriesDAO
+    abstract fun capitalsProgramDAO(): ProgramCountry.CapitalsProgramDAO
+
 }

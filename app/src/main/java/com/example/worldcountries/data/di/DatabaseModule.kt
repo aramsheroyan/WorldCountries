@@ -3,6 +3,7 @@ package com.example.worldcountries.data.di
 import android.app.Application
 import androidx.room.Room
 import com.example.worldcountries.data.room.Country
+import com.example.worldcountries.data.room.ProgramCountry
 import com.example.worldcountries.data.room.WCRoomDatabase
 import dagger.Module
 import dagger.Provides
@@ -21,5 +22,10 @@ class DatabaseModule {
     @Provides
     fun provideCountriesDAO(wcRoomDatabase: WCRoomDatabase): Country.CountriesDAO {
         return wcRoomDatabase.countriesDAO()
+    }
+
+    @Provides
+    fun provideCapitalsProgramDAO(wcRoomDatabase: WCRoomDatabase): ProgramCountry.CapitalsProgramDAO {
+        return wcRoomDatabase.capitalsProgramDAO()
     }
 }

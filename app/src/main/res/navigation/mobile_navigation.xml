@@ -9,7 +9,16 @@
             android:id="@+id/navigation_home"
             android:name="com.example.worldcountries.ui.home.HomeFragment"
             android:label="@string/title_home"
-            tools:layout="@layout/fragment_home"/>
+            tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_navigation_home_to_dailyProgramFragment2"
+            app:destination="@id/dailyProgramFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_countries"
@@ -38,5 +47,23 @@
         <argument
             android:name="name"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.worldcountries.ui.quiz.QuizFragment"
+        android:label="fragment_quiz"
+        tools:layout="@layout/fragment_quiz" />
+    <fragment
+        android:id="@+id/dailyProgramFragment"
+        android:name="com.example.worldcountries.ui.dailyprogram.DailyProgramFragment"
+        android:label="DailyProgramFragment" >
+        <action
+            android:id="@+id/action_dailyProgramFragment_to_countryInfoFragment"
+            app:destination="@id/countryInfoFragment" />
+        <action
+            android:id="@+id/action_dailyProgramFragment_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

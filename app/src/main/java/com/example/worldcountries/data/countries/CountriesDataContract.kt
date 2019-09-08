@@ -10,6 +10,9 @@ interface CountriesDataContract {
     interface Repository {
         fun getAllCountries(): Single<List<Country>>
         fun getCountryByName(name: String): Maybe<Country>
+        fun getRandom(amount: Int): Maybe<List<Country>>
+        fun getDailyCountries():Maybe<List<Country>>
+
     }
 
     interface RemoteDataSource {
@@ -20,5 +23,7 @@ interface CountriesDataContract {
         fun getAllCountries(): Single<List<Country>>
         fun getCountryByName(name: String): Maybe<Country>
         fun save(countries: List<Country>)
+        fun getRandom(amount: Int): Maybe<List<Country>>
+        fun getDailyCountries():Maybe<List<Country>>
     }
 }

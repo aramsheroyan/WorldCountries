@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.quiz.QuizFragment">
+
+<!--    <ImageView-->
+<!--        android:layout_width="72dp"-->
+<!--        android:layout_height="72dp"-->
+<!--        android:layout_marginLeft="18dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:scaleType="centerInside"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/ic_icon_back" />-->
+
+    <TextView
+        android:id="@+id/guessItemTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/optionOneButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Capital" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/optionOneButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toTopOf="@id/optionTwoButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guessItemTextView"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.6"
+        app:rippleColor="@android:color/transparent"
+        app:strokeColor="@color/colorPrimary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/optionTwoButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toTopOf="@id/optionThreeButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/optionOneButton"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.6"
+        app:rippleColor="@android:color/transparent"
+        app:strokeColor="@color/colorPrimary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/optionThreeButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toTopOf="@id/optionFourButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/optionTwoButton"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.6"
+        app:rippleColor="@android:color/transparent"
+        app:strokeColor="@color/colorPrimary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/optionFourButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toTopOf="@id/nextButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/optionThreeButton"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.6"
+        app:rippleColor="@android:color/transparent"
+        app:strokeColor="@color/colorPrimary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Next"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:rippleColor="@android:color/holo_blue_light"
+        app:strokeColor="@color/colorPrimary" />
+</androidx.constraintlayout.widget.ConstraintLayout>

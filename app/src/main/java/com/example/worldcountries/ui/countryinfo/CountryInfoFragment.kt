@@ -50,6 +50,11 @@ class CountryInfoFragment : Fragment(), CountryInfoPresentationContract.View {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroyed()
+    }
+
     override fun showCountryDetails(country: Country) {
         Timber.d(country.toString())
         if (country.flag != null) {

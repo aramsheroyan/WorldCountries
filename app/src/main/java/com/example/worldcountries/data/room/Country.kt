@@ -31,6 +31,12 @@ data class Country(
         @Query("SELECT * FROM countries where name=:name")
         fun getByName(name: String): Maybe<Country>
 
+        @Query("select * from countries  where not exists (select countryName from capitalsProgram where countries.name=capitalsProgram.countryName) ORDER BY RANDOM() LIMIT 5")
+        fun getDailyRandom(): Maybe<List<Country>>
+
+        @Query("SELECT * FROM countries ORDER BY RANDOM() LIMIT :amount")
+        fun getRandom(amount: Int): Maybe<List<Country>>
+
         @Insert
         fun insertAll(vararg country: Country)
     }

@@ -32,6 +32,13 @@ class CountriesRepository(private val remoteDataSource: CountriesDataContract.Re
         return localDataSource.getCountryByName(name)
     }
 
+    override fun getRandom(amount: Int): Maybe<List<Country>> {
+        return localDataSource.getRandom(amount)
+    }
+
+    override fun getDailyCountries(): Maybe<List<Country>> {
+        return localDataSource.getDailyCountries()
+    }
 
 }
 

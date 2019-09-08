@@ -9,5 +9,6 @@ interface CountryInfoPresentationContract {
 
     interface Presenter {
         fun onGetCountryDetails(name: String)
+        fun onDestroyed()
     }
 }
