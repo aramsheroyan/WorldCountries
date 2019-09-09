@@ -40,5 +40,9 @@ class CountriesRepository(private val remoteDataSource: CountriesDataContract.Re
         return localDataSource.getDailyCountries()
     }
 
+    override fun getCapitalsProgramInProgress(): Maybe<List<Country>> {
+        return localDataSource.getCapitalsProgramInProgress()
+    }
+
 }
 

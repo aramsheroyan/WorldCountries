@@ -21,12 +21,7 @@ class DailyProgramPresenter(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    if(it.isEmpty()){
-                        view.navigateToQuizScreen()
-                    }
-                    else {
                         view.setCountries(it)
-                    }
                 }, {
                     Timber.e(it)
                 })

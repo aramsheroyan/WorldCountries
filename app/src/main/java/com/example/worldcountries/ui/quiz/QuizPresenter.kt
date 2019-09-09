@@ -9,7 +9,6 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import kotlin.random.Random
 
-
 const val DIRECT_ORDER = 0
 const val REVERSE_ORDER = 1
 
@@ -30,20 +29,36 @@ class QuizPresenter(
     private val compositeDisposable = CompositeDisposable()
 
     override fun onScreenStarted(type: String, order: Int) {
-        compositeDisposable.add(
-            countriesRepository.getRandom(30)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    Timber.d(it.toString())
-                    countryPool.addAll(it)
-                    countries.addAll(it)
-                    this.order = order
-                    getNext()
-                }, {
-                    Timber.e(it)
-                })
-        )
+
+        when(type){
+            TYPE_ALL -> compositeDisposable.add(
+                countriesRepository.getRandom(30)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({
+                        Timber.d(it.toString())
+                        countryPool.addAll(it)
+                        countries.addAll(it)
+                        this.order = order
+                        getNext()
+                    }, {
+                        Timber.e(it)
+                    }))
+            TYPE_CAPITALS_DAILY -> compositeDisposable.add(
+                    countriesRepository.getCapitalsProgramInProgress()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe({
+                            Timber.d(it.toString())
+                            countryPool.addAll(it)
+                            countries.addAll(it)
+                            this.order = order
+                            getNext()
+                        }, {
+                            Timber.e(it)
+                        }))
+        }
+
     }
 
     override fun getNext() {

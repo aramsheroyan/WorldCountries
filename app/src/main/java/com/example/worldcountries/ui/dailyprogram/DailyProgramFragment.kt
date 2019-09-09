@@ -15,6 +15,7 @@ import com.example.worldcountries.data.room.Country
 import com.example.worldcountries.ui.countries.CountriesAdapter
 import com.example.worldcountries.ui.countries.CountriesItemDecoration
 import com.example.worldcountries.ui.countries.CountryViewHolder
+import com.example.worldcountries.ui.quiz.*
 import kotlinx.android.synthetic.main.fragment_daily_program.*
 import javax.inject.Inject
 
@@ -67,7 +68,7 @@ class DailyProgramFragment : Fragment(), DailyProgramPresentationContract.View,
         view?.findNavController()
             ?.navigate(
                 R.id.action_dailyProgramFragment_to_quizFragment,
-                bundleOf("TYPE" to "all", "order" to 0))
+                bundleOf(TYPE to TYPE_CAPITALS_DAILY, ORDER to DIRECT_ORDER))
     }
 
     override fun onSelected(countryName: String?) {

@@ -34,6 +34,9 @@ data class Country(
         @Query("select * from countries  where not exists (select countryName from capitalsProgram where countries.name=capitalsProgram.countryName) ORDER BY RANDOM() LIMIT 5")
         fun getDailyRandom(): Maybe<List<Country>>
 
+        @Query("select * from countries  where exists (select countryName from capitalsProgram where countries.name=capitalsProgram.countryName AND capitalsProgram.status='in-progress')")
+        fun getCapitalProgramInProgress(): Maybe<List<Country>>
+
         @Query("SELECT * FROM countries ORDER BY RANDOM() LIMIT :amount")
         fun getRandom(amount: Int): Maybe<List<Country>>
 

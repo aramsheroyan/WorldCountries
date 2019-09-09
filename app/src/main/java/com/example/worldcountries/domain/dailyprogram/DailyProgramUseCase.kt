@@ -5,8 +5,6 @@ import com.example.worldcountries.data.dailyprogram.CapitalsProgramDataContract
 import com.example.worldcountries.data.room.Country
 import com.example.worldcountries.data.room.ProgramCountry
 import io.reactivex.Maybe
-import io.reactivex.Single
-import timber.log.Timber
 
 class DailyProgramUseCase(
     private val countriesRepository: CountriesDataContract.Repository,
@@ -16,14 +14,18 @@ class DailyProgramUseCase(
     override fun getDailyCountries(): Maybe<List<Country>> {
 
         return capitalsProgramRepository.getInProgressCountries().flatMap {
-            if (it.isNotEmpty()) Maybe.just(listOf()) else countriesRepository.getDailyCountries()
-                .doAfterSuccess { it1 ->
-                    val programCountries = mutableListOf<ProgramCountry>()
-                    for (country in it1) {
-                        programCountries.add(ProgramCountry(0, "in-progress", country.name))
+            if (it.isNotEmpty()) {
+               countriesRepository.getCapitalsProgramInProgress()
+            } else {
+                countriesRepository.getDailyCountries()
+                    .doAfterSuccess { it1 ->
+                        val programCountries = mutableListOf<ProgramCountry>()
+                        for (country in it1) {
+                            programCountries.add(ProgramCountry(0, "in-progress", country.name))
+                        }
+                        capitalsProgramRepository.save(programCountries)
                     }
-                    capitalsProgramRepository.save(programCountries)
-                }
+            }
         }
     }
 

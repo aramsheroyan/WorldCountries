@@ -15,8 +15,10 @@ import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_quiz.*
 import javax.inject.Inject
 
-private const val TYPE = "TYPE"
-private const val ORDER = "ORDER"
+const val TYPE = "TYPE"
+const val ORDER = "ORDER"
+const val TYPE_ALL = "all"
+const val TYPE_CAPITALS_DAILY = "daily_capitals"
 
 class QuizFragment : Fragment(), QuizPresentationContract.View {
 

@@ -28,8 +28,11 @@ class CountriesLocalDataSource(val countriesDAO: CountriesDAO) :
     override fun getDailyCountries(): Maybe<List<Country>> {
         return countriesDAO.getDailyRandom()
             .doAfterSuccess {
-               Timber.d(it.toString())
+                Timber.d(it.toString())
             }
+    }
 
+    override fun getCapitalsProgramInProgress(): Maybe<List<Country>> {
+        return countriesDAO.getCapitalProgramInProgress()
     }
 }

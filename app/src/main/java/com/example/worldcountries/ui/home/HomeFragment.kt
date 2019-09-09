@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -24,8 +25,8 @@ class HomeFragment : Fragment() {
     ): View? {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        (activity as AppCompatActivity).supportActionBar?.hide()
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-
         return root
     }
 
@@ -37,5 +38,10 @@ class HomeFragment : Fragment() {
                     R.id.action_navigation_home_to_dailyProgramFragment2,
                     bundleOf("TYPE" to "all"))
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as AppCompatActivity).supportActionBar?.show()
     }
 }
