@@ -10,7 +10,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.worldcountries"
+        applicationId "com.aramsheroyan.worldcountries"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -55,6 +55,7 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.23.2'
     // if you use the support libraries
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.23.2'
     kapt 'com.google.dagger:dagger-compiler:2.23.2'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'

@@ -34,7 +34,7 @@
                 android:scaleType="fitCenter" />
         </androidx.cardview.widget.CardView>
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/nameItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/flag" />
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/capitalItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/nameItemView" />
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/regionItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/capitalItemView" />
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/subRegionItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/regionItemView" />
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/populationItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/subRegionItemView" />
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/areaItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/populationItemView" />
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/timeZonesItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/areaItemView" />
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/currencyItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintTop_toBottomOf="@id/timeZonesItemView" />
 
-        <com.example.worldcountries.ui.countryinfo.CountryInfoItemView
+        <com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoItemView
             android:id="@+id/languageItemView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
 
     <fragment
             android:id="@+id/navigation_home"
-            android:name="com.example.worldcountries.ui.home.HomeFragment"
+            android:name="com.aramsheroyan.worldcountries.ui.home.HomeFragment"
             android:label="@string/title_home"
             tools:layout="@layout/fragment_home">
         <action
@@ -16,13 +16,15 @@
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_navigation_home_to_dailyProgramFragment2"
-            app:destination="@id/dailyProgramFragment" />
+            android:id="@+id/action_navigation_home_to_dailyProgramFragment"
+            app:destination="@id/dailyProgramFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
         android:id="@+id/navigation_countries"
-        android:name="com.example.worldcountries.ui.countries.CountriesFragment"
+        android:name="com.aramsheroyan.worldcountries.ui.countries.CountriesFragment"
         android:label="Countries"
         tools:layout="@layout/fragment_countries">
         <action
@@ -36,27 +38,31 @@
 
     <fragment
             android:id="@+id/navigation_notifications"
-            android:name="com.example.worldcountries.ui.notifications.NotificationsFragment"
+            android:name="com.aramsheroyan.worldcountries.ui.notifications.NotificationsFragment"
             android:label="@string/title_notifications"
             tools:layout="@layout/fragment_notifications"/>
     <fragment
         android:id="@+id/countryInfoFragment"
-        android:name="com.example.worldcountries.ui.countryinfo.CountryInfoFragment"
-        android:label="fragment_country_info"
-        tools:layout="@layout/fragment_country_info" >
+        android:name="com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoFragment"
+        android:label="Country Details"
+        tools:layout="@layout/fragment_country_info">
         <argument
             android:name="name"
             app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
-        android:name="com.example.worldcountries.ui.quiz.QuizFragment"
-        android:label="fragment_quiz"
-        tools:layout="@layout/fragment_quiz" />
+        android:name="com.aramsheroyan.worldcountries.ui.quiz.QuizFragment"
+        android:label="Select the Capital"
+        tools:layout="@layout/fragment_quiz">
+        <action
+            android:id="@+id/action_quizFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
     <fragment
         android:id="@+id/dailyProgramFragment"
-        android:name="com.example.worldcountries.ui.dailyprogram.DailyProgramFragment"
-        android:label="DailyProgramFragment" >
+        android:name="com.aramsheroyan.worldcountries.ui.dailyprogram.DailyProgramFragment"
+        android:label="Today's Countries">
         <action
             android:id="@+id/action_dailyProgramFragment_to_countryInfoFragment"
             app:destination="@id/countryInfoFragment" />
@@ -65,5 +71,19 @@
             app:destination="@id/quizFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.aramsheroyan.worldcountries.ui.score.ScoreFragment"
+        android:label="Score"
+        tools:layout="@layout/score_fragment">
+        <action
+            android:id="@+id/action_scoreFragment_to_quizFragment"
+            app:destination="@id/quizFragment"
+            app:popUpTo="@+id/quizFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_scoreFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>
