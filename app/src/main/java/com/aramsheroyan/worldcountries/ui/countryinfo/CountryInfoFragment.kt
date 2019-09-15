@@ -62,24 +62,22 @@ class CountryInfoFragment : Fragment(), CountryInfoPresentationContract.View {
             ImageUtils.loadImage(this, country.flag, flagImageView)
         }
 
-        nameItemView.setStrings("Country", country.name)
-        capitalItemView.setStrings("Capital", country.capital)
-        regionItemView.setStrings("Region", country.region)
-        subRegionItemView.setStrings("Subregion", country.subregion)
-        populationItemView.setStrings("Population", country.population.toString())
-        areaItemView.setStrings("Area", country.area.toString() + " km\u00B2")
+        nameItemView.setStrings(getString(R.string.country), country.name)
+        capitalItemView.setStrings(getString(R.string.capital), country.capital)
+        regionItemView.setStrings(getString(R.string.region), country.region)
+        subRegionItemView.setStrings(getString(R.string.subregion), country.subregion)
+        populationItemView.setStrings(getString(R.string.population), country.population.toString())
+        areaItemView.setStrings(getString(R.string.area), country.area.toString() + " km\u00B2")
         timeZonesItemView.setStrings(
-            "Timezones", country.timezones.toString()
-                .replace("[", "").replace("]", "")
+            getString(R.string.timezones), stripBrackets(country.timezones.toString())
+
         )
         currencyItemView.setStrings(
-            "Currency", country.currencies.toString()
-                .replace("[", "").replace("]", "")
+            getString(R.string.currency), stripBrackets(country.currencies.toString())
         )
 
         languageItemView.setStrings(
-            "Languages", country.languages.toString()
-                .replace("[", "").replace("]", "")
+            getString(R.string.languages), stripBrackets(country.languages.toString())
         )
 
 
@@ -90,6 +88,10 @@ class CountryInfoFragment : Fragment(), CountryInfoPresentationContract.View {
             startActivity(mapIntent)
         }
 
+    }
+
+    private fun stripBrackets(text: String): String {
+        return text.replace("[", "").replace("]", "")
     }
 
     private fun createComponent(): CountryInfoComponent? {

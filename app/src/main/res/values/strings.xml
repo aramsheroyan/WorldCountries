@@ -6,4 +6,28 @@
     <string name="show_on_map">Show on map</string>
     <string name="all">All</string>
     <string name="learned">Learned</string>
+    <string name="start_the_quiz">Start the Quiz</string>
+    <string name="try_from_all">Try From All</string>
+    <string name="try_from_all_description"> Take a quiz on 30 randomly selected countries</string>
+    <string name="daily_program">Daily Program</string>
+    <string name="daily_program_description">Learn 5 new capitals every day</string>
+    <string name="next">Next</string>
+    <string name="your_score_is">Your score is</string>
+    <string name="retry">Retry</string>
+    <string name="finish">Finish</string>
+    <string name="you_need_to_score_100">You need to score 100% in order to continue</string>
+    <string name="you_need_to_score_75">You need to score at least 75% on already learned countries
+        in order complete the daily program</string>
+    <string name="lets_look_at_countries">Great! Lets looks at the counties that you\'ve already
+        learned. You need to score at least 75% to complete the daily program</string>
+    <string name="great_job_you_finished">Great job! You finished today\'s program</string>
+    <string name="country">Country</string>
+    <string name="capital">Capital</string>
+    <string name="region">Region</string>
+    <string name="subregion">Subregion</string>
+    <string name="population">Population</string>
+    <string name="area">Area</string>
+    <string name="timezones">Timezones</string>
+    <string name="currency">Currency</string>
+    <string name="languages">Languages</string>
 </resources>

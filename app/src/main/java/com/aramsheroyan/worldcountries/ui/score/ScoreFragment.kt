@@ -35,8 +35,6 @@ class ScoreFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Score"
-
         viewModel = ViewModelProviders.of(this).get(ScoreViewModel::class.java)
 
         arguments?.let {
@@ -57,39 +55,36 @@ class ScoreFragment : Fragment() {
     private fun handleActionCommand(action: ScoreViewModel.Action) {
         when (action) {
             RetryNewCountries -> {
-                actionButton.text = "Retry"
+                actionButton.text = getString(R.string.retry)
                 scoreTextView.text = "$score%"
-                detailsTextView.text = "You need to score 100% in order to continue"
+                detailsTextView.text = getString(R.string.you_need_to_score_100)
                 actionButton.setOnClickListener {
                     view?.findNavController()
                         ?.navigate(R.id.action_scoreFragment_to_quizFragment, bundleOf(TYPE to type))
                 }
             }
             RetryLearnedCountries -> {
-                actionButton.text = "Retry"
+                actionButton.text = getString(R.string.retry)
                 scoreTextView.text = "$score%"
-                detailsTextView.text =
-                    "You need to score at least 75% on already learned countries in order complete the daily program"
+                detailsTextView.text =getString(R.string.you_need_to_score_75)
                 actionButton.setOnClickListener {
                     view?.findNavController()
                         ?.navigate(R.id.action_scoreFragment_to_quizFragment, bundleOf(TYPE to type))
                 }
             }
             Next -> {
-                actionButton.text = "Next"
+                actionButton.text = getString(R.string.next)
                 scoreTextView.text = "$score%"
-                detailsTextView.text =
-                    "Great! Lets looks at the counties that you've already learned. You need to score at least 75% to complete the daily program"
-                actionButton.setOnClickListener {
+                detailsTextView.text =getString(R.string.lets_look_at_countries)
+                    actionButton.setOnClickListener {
                     view?.findNavController()
                         ?.navigate(R.id.action_scoreFragment_to_quizFragment, bundleOf(TYPE to TYPE_LEARNED))
                 }
             }
             Finish -> {
-                actionButton.text = "Finish"
+                actionButton.text = getString(R.string.finish)
                 scoreTextView.text = "$score%"
-                detailsTextView.text =
-                    "Great job! You have finished today's program"
+                detailsTextView.text = getString(R.string.great_job_you_finished)
                 actionButton.setOnClickListener {
                     view?.findNavController()
                         ?.navigate(R.id.action_scoreFragment_to_navigation_home)

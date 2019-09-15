@@ -10,7 +10,6 @@ import io.reactivex.disposables.CompositeDisposable
 class ScoreViewModel : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
-    //    private val score = MutableLiveData<String>()
     private val actionCommand = MutableLiveData<Action>()
 
     sealed class Action {
