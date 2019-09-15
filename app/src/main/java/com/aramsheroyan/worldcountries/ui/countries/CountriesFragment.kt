@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aramsheroyan.worldcountries.R
 import com.aramsheroyan.worldcountries.app.WCApplication
 import com.aramsheroyan.worldcountries.data.room.Country
+import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_countries.*
 import javax.inject.Inject
 
@@ -45,7 +47,20 @@ class CountriesFragment : Fragment(), CountriesPresentationContract.View,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.onScreenStarted()
+        setButton(allButton, true)
+        allButton.setOnClickListener {
+            presenter.onScreenStarted()
+            setButton(allButton, true)
+            setButton(learnedButton, false)
 
+
+        }
+
+        learnedButton.setOnClickListener {
+            presenter.onLearnedCountriesSelected()
+            setButton(allButton, false)
+            setButton(learnedButton, true)
+        }
 
     }
 
@@ -79,7 +94,6 @@ class CountriesFragment : Fragment(), CountriesPresentationContract.View,
 
     }
 
-
     override fun onSelected(countryName: String?) {
 
         view?.findNavController()
@@ -87,6 +101,26 @@ class CountriesFragment : Fragment(), CountriesPresentationContract.View,
                 R.id.action_navigation_countries_to_countryInfoFragment,
                 bundleOf("name" to countryName)
             )
+    }
+
+    private fun setButton(button: MaterialButton, checked: Boolean) {
+        var background = R.color.white
+        var textColor = R.color.colorPrimary
+        if (checked) {
+            background = R.color.colorPrimary
+            textColor = R.color.white
+        }
+        button.backgroundTintList = ContextCompat.getColorStateList(
+            context!!,
+            background
+        )
+
+        button.setTextColor(
+            ContextCompat.getColorStateList(
+                context!!,
+                textColor
+            )
+        )
     }
 
     private fun createComponent(): CountriesComponent? {

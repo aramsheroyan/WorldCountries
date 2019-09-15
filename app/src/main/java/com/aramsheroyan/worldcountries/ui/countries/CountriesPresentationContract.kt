@@ -7,6 +7,7 @@ interface CountriesPresentationContract {
 
     interface Presenter{
         fun onScreenStarted()
+        fun onLearnedCountriesSelected()
         fun onDestroyed()
     }
 

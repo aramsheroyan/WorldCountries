@@ -28,6 +28,21 @@ class CountriesPresenter(
         )
     }
 
+    override fun onLearnedCountriesSelected() {
+        compositeDisposable.add(
+            countriesRepository.getLearnedCountries(350)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({countries->
+                    view.populateData(countries)
+                },{
+                        t: Throwable? ->
+                    Timber.e(t)
+
+                })
+        )
+    }
+
     override fun onDestroyed() {
         compositeDisposable.dispose()
     }

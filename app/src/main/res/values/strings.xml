@@ -4,4 +4,6 @@
     <string name="browse">Browse</string>
     <string name="title_notifications">Notifications</string>
     <string name="show_on_map">Show on map</string>
+    <string name="all">All</string>
+    <string name="learned">Learned</string>
 </resources>
