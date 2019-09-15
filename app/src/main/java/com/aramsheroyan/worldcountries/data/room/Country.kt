@@ -40,6 +40,9 @@ data class Country(
         @Query("select * from countries  where exists (select countryName from capitalsProgram where countries.name=capitalsProgram.countryName AND capitalsProgram.status='completed') ORDER BY RANDOM() LIMIT :amount")
         fun getLearnedCountries(amount: Int): Maybe<List<Country>>
 
+        @Query("select * from countries  where exists (select countryName from capitalsProgram where countries.name=capitalsProgram.countryName AND capitalsProgram.status='completed') ORDER BY countries.name ASC")
+        fun getAllLearnedCountries(): Maybe<List<Country>>
+
         @Query("SELECT * FROM countries ORDER BY RANDOM() LIMIT :amount")
         fun getRandom(amount: Int): Maybe<List<Country>>
 

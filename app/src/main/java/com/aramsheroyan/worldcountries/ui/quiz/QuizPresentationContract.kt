@@ -5,7 +5,8 @@ interface QuizPresentationContract {
         fun setNext(
             name: String,
             correctAnswer: String,
-            options: List<String>
+            options: List<String>,
+            leftCount: String
         )
 
         fun setCompleted(score: Int, skipLearnedCountries: Boolean)

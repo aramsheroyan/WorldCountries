@@ -39,4 +39,8 @@ class CountriesLocalDataSource(val countriesDAO: CountriesDAO) :
     override fun getLearnedCountries(amount: Int): Maybe<List<Country>> {
         return countriesDAO.getLearnedCountries(amount)
     }
+
+    override fun getAllLearnedCountries(): Maybe<List<Country>> {
+        return countriesDAO.getAllLearnedCountries()
+    }
 }

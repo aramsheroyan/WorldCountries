@@ -13,6 +13,7 @@ interface CountriesDataContract {
         fun getDailyCountries(): Maybe<List<Country>>
         fun getCapitalsProgramInProgress(): Maybe<List<Country>>
         fun getLearnedCountries(amount: Int):Maybe<List<Country>>
+        fun getAllLearnedCountries(): Maybe<List<Country>>
     }
 
     interface RemoteDataSource {
@@ -27,5 +28,6 @@ interface CountriesDataContract {
         fun getDailyCountries(): Maybe<List<Country>>
         fun getCapitalsProgramInProgress(): Maybe<List<Country>>
         fun getLearnedCountries(amount: Int):Maybe<List<Country>>
+        fun getAllLearnedCountries(): Maybe<List<Country>>
     }
 }

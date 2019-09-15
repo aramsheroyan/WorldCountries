@@ -2,6 +2,7 @@ package com.aramsheroyan.worldcountries.ui.quiz
 
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_quiz.*
 import javax.inject.Inject
 
+
 const val TYPE = "TYPE"
 const val ORDER = "ORDER"
 const val TYPE_ALL = "all"
@@ -33,6 +35,7 @@ class QuizFragment : Fragment(), QuizPresentationContract.View {
     private var type: String? = null
     private var order: Int = 1
     private var correctAnswer: String? = null
+    private var timer: CountDownTimer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         createSubcomponent()?.inject(this)
@@ -59,6 +62,15 @@ class QuizFragment : Fragment(), QuizPresentationContract.View {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        timer?.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timer?.cancel()
+    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -68,9 +80,11 @@ class QuizFragment : Fragment(), QuizPresentationContract.View {
     override fun setNext(
         name: String,
         correctAnswer: String,
-        options: List<String>
+        options: List<String>,
+        leftCount: String
     ) {
         this.correctAnswer = correctAnswer
+        countTextView.text = leftCount
         nextButton.setOnClickListener(null)
         setButtonDisabled(nextButton)
         guessItemTextView.text = name
@@ -79,13 +93,30 @@ class QuizFragment : Fragment(), QuizPresentationContract.View {
         optionThreeButton.text = options[2]
         optionFourButton.text = options[3]
         setUpListeners()
+
+        timer = object : CountDownTimer(10000, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                timerTextView.text = (millisUntilFinished / 1000).toString()
+            }
+
+            override fun onFinish() {
+                tearDownClickListeners()
+                presenter.updateScore(false)
+                presenter.getNext()
+            }
+        }.start()
+
     }
 
     override fun setCompleted(score: Int, skipLearnedCountries: Boolean) {
-        if(skipLearnedCountries)
+        if (skipLearnedCountries)
             type = TYPE_LEARNED
 
-        view?.findNavController()?.navigate(R.id.action_quizFragment_to_scoreFragment, bundleOf(TYPE to type,SCORE to score))
+        view?.findNavController()?.navigate(
+            R.id.action_quizFragment_to_scoreFragment,
+            bundleOf(TYPE to type, SCORE to score)
+        )
     }
 
     private fun setUpListeners() {
@@ -105,6 +136,7 @@ class QuizFragment : Fragment(), QuizPresentationContract.View {
 
     private fun checkAnswer(button: MaterialButton) {
         tearDownClickListeners()
+        timer?.cancel()
         if (button.text.toString() == correctAnswer.toString()) {
             presenter.updateScore(true)
             setCorrect(button)

@@ -57,7 +57,9 @@
         tools:layout="@layout/fragment_quiz">
         <action
             android:id="@+id/action_quizFragment_to_scoreFragment"
-            app:destination="@id/scoreFragment" />
+            app:destination="@id/scoreFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment
         android:id="@+id/dailyProgramFragment"
@@ -69,8 +71,8 @@
         <action
             android:id="@+id/action_dailyProgramFragment_to_quizFragment"
             app:destination="@id/quizFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/scoreFragment"
@@ -80,6 +82,8 @@
         <action
             android:id="@+id/action_scoreFragment_to_quizFragment"
             app:destination="@id/quizFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@+id/quizFragment"
             app:popUpToInclusive="true" />
         <action
@@ -93,6 +97,8 @@
         tools:layout="@layout/splash_fragment" >
         <action
             android:id="@+id/action_splashFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            app:destination="@id/navigation_home"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

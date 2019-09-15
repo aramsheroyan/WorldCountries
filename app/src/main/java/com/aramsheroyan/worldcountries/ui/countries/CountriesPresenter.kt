@@ -30,7 +30,7 @@ class CountriesPresenter(
 
     override fun onLearnedCountriesSelected() {
         compositeDisposable.add(
-            countriesRepository.getLearnedCountries(350)
+            countriesRepository.getAllLearnedCountries()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({countries->

@@ -91,19 +91,14 @@ class QuizPresenter(
                     correctAnswer = country.name
                 }
             }
-
-
-            Timber.d("Exlude : $excludeIndex")
-            Timber.d("OptionsIdex : $optionsIndex")
-
-            Timber.d("Options : $options")
-            Timber.d("Country : $country")
-            Timber.d("CountrPooly : $countryPool")
-
-            Timber.d("correct : $correctAnswersCount")
-
             countryPool.removeAt(0)
-            view.setNext(name, correctAnswer, options.toList().shuffled())
+            val leftCount = "${countries.size - countryPool.size}/${countries.size}"
+            view.setNext(
+                name,
+                correctAnswer,
+                options.toList().shuffled(),
+                leftCount
+            )
         } else {
             val score = ((correctAnswersCount.toFloat() / countries.size.toFloat()) * 100).toInt()
             compositeDisposable.add(
