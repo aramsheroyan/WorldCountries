@@ -13,6 +13,7 @@ import com.aramsheroyan.worldcountries.ui.dailyprogram.DailyProgramComponent
 import com.aramsheroyan.worldcountries.ui.dailyprogram.DailyProgramModule
 import com.aramsheroyan.worldcountries.ui.quiz.QuizComponent
 import com.aramsheroyan.worldcountries.ui.quiz.QuizModule
+import com.aramsheroyan.worldcountries.ui.splash.SplashComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -35,5 +36,5 @@ interface AppComponent {
     fun createSubComponent(module: CountryInfoModule): CountryInfoComponent
     fun createSubComponent(module: QuizModule): QuizComponent
     fun createSubComponent(module: DailyProgramModule): DailyProgramComponent
-
+    fun createSubComponent(): SplashComponent
 }

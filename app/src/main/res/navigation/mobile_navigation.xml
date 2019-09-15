@@ -3,7 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/mobile_navigation"
-            app:startDestination="@+id/navigation_home">
+            app:startDestination="@+id/splashFragment">
 
     <fragment
             android:id="@+id/navigation_home"
@@ -13,13 +13,13 @@
         <action
             android:id="@+id/action_navigation_home_to_quizFragment"
             app:destination="@id/quizFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right" />
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_navigation_home_to_dailyProgramFragment"
             app:destination="@id/dailyProgramFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"/>
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
 
     <fragment
@@ -84,6 +84,15 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_scoreFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.aramsheroyan.worldcountries.ui.splash.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
 </navigation>

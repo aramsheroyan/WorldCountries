@@ -47,6 +47,5 @@ class CountriesRepository(private val remoteDataSource: CountriesDataContract.Re
     override fun getLearnedCountries(amount: Int): Maybe<List<Country>> {
         return  localDataSource.getLearnedCountries(amount)
     }
-
 }
 
