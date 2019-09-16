@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Aram Sheroyan
+  ~ https://github.com/aramsheroyan
+  -->
+
 <resources>
     <color name="ic_launcher_background">#FFFFFF</color>
 </resources>

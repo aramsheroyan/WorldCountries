@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Aram Sheroyan
+  ~ https://github.com/aramsheroyan
+  -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
@@ -14,6 +19,6 @@
     <item
             android:id="@+id/navigation_notifications"
             android:icon="@drawable/ic_achievements_24dp"
-            android:title="Achievements"/>
+            android:title="About"/>
 
 </menu>

@@ -1,3 +1,8 @@
+<!--
+  ~ Created by Aram Sheroyan
+  ~ https://github.com/aramsheroyan
+  -->
+
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@color/forty_percent_black">
     <item android:id="@android:id/mask">

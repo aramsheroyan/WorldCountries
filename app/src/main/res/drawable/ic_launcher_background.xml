@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Aram Sheroyan
+  ~ https://github.com/aramsheroyan
+  -->
+
 <vector
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:height="108dp"

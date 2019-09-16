@@ -1,3 +1,8 @@
+/*
+ * Created by Aram Sheroyan
+ * https://github.com/aramsheroyan
+ */
+
 package com.aramsheroyan.worldcountries.ui.dailyprogram
 
 import androidx.fragment.app.Fragment

@@ -1,3 +1,8 @@
+<!--
+  ~ Created by Aram Sheroyan
+  ~ https://github.com/aramsheroyan
+  -->
+
 <resources>
     <declare-styleable name="CountryInfoItemView">
         <attr name="title" format="string" />

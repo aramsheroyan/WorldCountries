@@ -1,3 +1,8 @@
+/*
+ * Created by Aram Sheroyan
+ * https://github.com/aramsheroyan
+ */
+
 package com.aramsheroyan.worldcountries.domain.dailyprogram
 
 import com.aramsheroyan.worldcountries.data.room.Country
