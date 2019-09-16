@@ -42,11 +42,6 @@
     </fragment>
 
     <fragment
-            android:id="@+id/navigation_notifications"
-            android:name="com.aramsheroyan.worldcountries.ui.notifications.NotificationsFragment"
-            android:label="@string/title_notifications"
-            tools:layout="@layout/fragment_notifications"/>
-    <fragment
         android:id="@+id/countryInfoFragment"
         android:name="com.aramsheroyan.worldcountries.ui.countryinfo.CountryInfoFragment"
         android:label="Country Details"
@@ -106,4 +101,9 @@
             app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_about"
+        android:name="com.aramsheroyan.worldcountries.ui.about.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/about_fragment" />
 </navigation>

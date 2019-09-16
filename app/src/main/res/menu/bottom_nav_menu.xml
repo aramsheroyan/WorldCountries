@@ -17,7 +17,7 @@
             android:title="@string/browse"/>
 
     <item
-            android:id="@+id/navigation_notifications"
+            android:id="@+id/navigation_about"
             android:icon="@drawable/ic_info"
             android:title="@string/about"/>
 
