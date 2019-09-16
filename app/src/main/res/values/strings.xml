@@ -6,6 +6,7 @@
 <resources>
     <string name="app_name">World Countries</string>
     <string name="title_home">Home</string>
+    <string name="about">About</string>
     <string name="browse">Browse</string>
     <string name="title_notifications">Notifications</string>
     <string name="show_on_map">Show on map</string>
