@@ -25,6 +25,8 @@ class QuizPresenter(
 
     private var countryPool = mutableListOf<Country>()
     private var countries = mutableListOf<Country>()
+    private var allCountries = mutableListOf<Country>()
+
 
     private var name: String = ""
     private var type: String = ""
@@ -54,21 +56,20 @@ class QuizPresenter(
                     countryPool.addAll(shuffledList)
                     countries.addAll(shuffledList)
                     this.order = order
-                    getNext()
+                    getAllCountries()
                 }, {
                     Timber.e(it)
                 })
-        )
 
+        )
     }
 
     override fun getNext() {
         if (countryPool.size > 0) {
             val country = countryPool[0]
-            val excludeIndex = countries.size - countryPool.size
-            val optionsIndex = (0 until countries.size - 1).shuffled().take(4).toMutableList()
-            for (i in 0 until 3) {
-                if (optionsIndex[i] == excludeIndex) {
+            val optionsIndex = (0 until allCountries.size - 1).shuffled().take(4).toMutableList()
+            for((indexValue, i) in optionsIndex.withIndex() ){
+                if(country.name == allCountries[indexValue].name){
                     optionsIndex.removeAt(i)
                 }
             }
@@ -77,9 +78,9 @@ class QuizPresenter(
             when (order) {
                 DIRECT_ORDER -> {
                     options = mutableListOf(
-                        countries[optionsIndex[0]].capital!!,
-                        countries[optionsIndex[1]].capital!!,
-                        countries[optionsIndex[2]].capital!!,
+                        allCountries[optionsIndex[0]].capital!!,
+                        allCountries[optionsIndex[1]].capital!!,
+                        allCountries[optionsIndex[2]].capital!!,
                         country.capital!!
                     )
                     name = country.name!!
@@ -87,9 +88,9 @@ class QuizPresenter(
                 }
                 REVERSE_ORDER -> {
                     options = mutableListOf(
-                        countries[optionsIndex[0]].name!!,
-                        countries[optionsIndex[1]].name!!,
-                        countries[optionsIndex[2]].name!!,
+                        allCountries[optionsIndex[0]].name!!,
+                        allCountries[optionsIndex[1]].name!!,
+                        allCountries[optionsIndex[2]].name!!,
                         country.name!!
                     )
                     name = country.capital!!
@@ -130,10 +131,8 @@ class QuizPresenter(
                     }, {
                         Timber.e(it)
                     })
-
             )
         }
-
 
     }
 
@@ -144,6 +143,21 @@ class QuizPresenter(
 
     override fun onDestroyed() {
         compositeDisposable.dispose()
+    }
+
+    private fun getAllCountries(){
+        compositeDisposable.add(
+            countriesRepository.getAllCountries()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    allCountries.addAll(it.shuffled())
+                    getNext()
+                }, {
+                    Timber.e(it)
+                })
+
+        )
     }
 
 
