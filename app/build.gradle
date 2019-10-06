@@ -41,6 +41,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     buildToolsVersion = '28.0.3'
 }
 
@@ -80,6 +85,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'org.mockito:mockito-core:3.1.0'
 
     def room_version = "2.2.0-alpha01" // 2.1.0 for latest stable version
 
@@ -98,4 +104,5 @@ dependencies {
 
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
 }
